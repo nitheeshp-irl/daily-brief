@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "daily-brief"
+version = "0.2.0"
+description = "A local, privacy-first daily briefing agent: pulls Hacker News, Reddit, RSS, GitHub (and optionally your own LinkedIn session), filters the noise and writes a Markdown brief with an LLM."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Nitheesh Poojary" }]
+keywords = ["briefing", "llm", "ollama", "rss", "hackernews", "agent"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+]
+dependencies = [
+  "pyyaml>=6.0.1",
+  "requests>=2.31.0",
+  "defusedxml>=0.7.1",
+  "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+linkedin = ["aiohttp>=3.9.0", "patchright>=1.49.0"]
+claude = ["anthropic>=0.40.0"]
+openai = ["openai>=1.50.0"]
+gemini = ["google-genai>=1.0.0"]
+all = ["daily-brief[linkedin,claude,openai,gemini]"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+daily-brief = "daily_brief.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/daily_brief"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]

@@ -1,0 +1,144 @@
+{
+  "schema": 2,
+  "date": "sample",
+  "sources": {
+    "hackernews": {
+      "posts": [
+        {
+          "origin": "hackernews",
+          "_source": "hn",
+          "title": "Show HN: Kubesight \u2013 a TUI for debugging Kubernetes pods",
+          "author": "example_user1",
+          "body": "",
+          "url": "https://example.com/kubesight",
+          "links": [
+            "https://example.com/kubesight",
+            "https://news.ycombinator.com/item?id=1"
+          ],
+          "published": "2026-10-31T12:00:00+00:00",
+          "timestamp": "2026-10-31",
+          "points": 412,
+          "comments": 120
+        },
+        {
+          "origin": "hackernews",
+          "_source": "hn",
+          "title": "Why we moved off Terraform Cloud",
+          "author": "example_user2",
+          "body": "A migration write-up covering state locking, cost, and OpenTofu.",
+          "url": "https://example.com/terraform-exit",
+          "links": [
+            "https://example.com/terraform-exit"
+          ],
+          "published": "2026-10-31T09:00:00+00:00",
+          "timestamp": "2026-10-31",
+          "points": 230,
+          "comments": 88
+        }
+      ]
+    },
+    "reddit": {
+      "posts": [
+        {
+          "origin": "reddit",
+          "_source": "reddit:r/aws",
+          "title": "Lambda SnapStart now supports more runtimes",
+          "author": "example_user3",
+          "body": "Cold starts dropped from 2s to 300ms in our tests with SnapStart.",
+          "url": "https://example.com/snapstart",
+          "links": [
+            "https://example.com/snapstart"
+          ],
+          "published": "2026-10-31T10:00:00+00:00",
+          "timestamp": "2026-10-31",
+          "points": 150,
+          "comments": 30
+        },
+        {
+          "origin": "reddit",
+          "_source": "reddit:r/LocalLLaMA",
+          "title": "Running a 7B model with MCP tools on a laptop",
+          "author": "example_user4",
+          "body": "Guide to wiring ollama to MCP servers with a small agent loop.",
+          "url": "https://example.com/local-mcp",
+          "links": [
+            "https://example.com/local-mcp"
+          ],
+          "published": "2026-10-31T08:00:00+00:00",
+          "timestamp": "2026-10-31",
+          "points": 310,
+          "comments": 75
+        }
+      ]
+    },
+    "rss": {
+      "posts": [
+        {
+          "origin": "rss",
+          "_source": "rss:Example Cloud Blog",
+          "title": "Announcing EKS Auto Mode improvements",
+          "author": "Example Cloud Blog",
+          "headline": "Example Cloud Blog",
+          "body": "New node pools and faster scaling for managed Kubernetes on AWS.",
+          "url": "https://example.com/eks-auto",
+          "links": [
+            "https://example.com/eks-auto"
+          ],
+          "published": "2026-10-31T07:00:00+00:00",
+          "timestamp": "2026-10-31"
+        },
+        {
+          "origin": "rss",
+          "_source": "rss:Example Cloud Blog",
+          "title": "Ten ways to improve your career with AI",
+          "author": "Example Cloud Blog",
+          "headline": "Example Cloud Blog",
+          "body": "Follow for more! Comment below if you agree. AI will change everything.",
+          "url": "https://example.com/career-ai",
+          "links": [
+            "https://example.com/career-ai"
+          ],
+          "published": "2026-10-31T06:00:00+00:00",
+          "timestamp": "2026-10-31"
+        }
+      ]
+    },
+    "github_trending": {
+      "posts": [
+        {
+          "origin": "github",
+          "_source": "github_trending",
+          "title": "example-org/agentkit",
+          "author": "example-org",
+          "headline": "Python",
+          "body": "Minimal toolkit for building LLM agents with MCP.\nTopics: llm, mcp, agents",
+          "url": "https://github.com/example-org/agentkit",
+          "links": [
+            "https://github.com/example-org/agentkit"
+          ],
+          "published": "2026-10-28T00:00:00Z",
+          "timestamp": "2026-10-28",
+          "points": 1800
+        }
+      ]
+    },
+    "linkedin": {
+      "posts": [
+        {
+          "origin": "linkedin",
+          "_source": "saved",
+          "_priority": "high",
+          "author": "Example Author",
+          "headline": "Staff Engineer at Example Corp",
+          "timestamp": "2w",
+          "title": "",
+          "body": "A thread on GitOps pitfalls: drift detection, secrets in Git, and why ArgoCD app-of-apps needs guardrails. https://example.com/gitops-pitfalls",
+          "links": [
+            "https://example.com/gitops-pitfalls"
+          ],
+          "relevance_signal": "explicit_save"
+        }
+      ]
+    }
+  }
+}

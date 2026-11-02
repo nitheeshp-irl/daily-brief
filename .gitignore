@@ -1,0 +1,29 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# local config + personal data
+config.yaml
+data/
+logs/
+*.db
+
+# python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.ruff_cache/
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+
+# unrelated local files
+valkey-mcp-server.log
+skills/

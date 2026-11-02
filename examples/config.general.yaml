@@ -1,0 +1,39 @@
+# A broader starter config for developers who are not AWS/DevOps focused.
+# Use it with:  daily-brief --config examples/config.general.yaml run
+# Paths (data/, logs/) resolve relative to this file, so copy it to your own folder first.
+
+profile:
+  role: Software engineer
+  interests: [developer tools, open source, AI]
+
+topics:
+  ai: [llm, "ai agent*", rag, mcp, ollama, openai, anthropic, claude, gemini, "open-weight*", inference]
+  programming: [rust, python, golang, typescript, compiler, database, sqlite, postgres, linux, git]
+  security: [security, vulnerability, cve, exploit, supply chain, encryption, "zero-day"]
+  opensource: ["open source", "open-source", release, tool, cli, framework, library]
+  infra: [kubernetes, docker, terraform, cloud, aws, observability, devops]
+
+filters:
+  block_presets: [promoted, job_ads]
+
+sources:
+  hackernews: {enabled: true, max_items: 30, min_points: 100}
+  reddit: {enabled: false}      # anonymous Reddit access is throttled; enable if it works for you
+  rss:
+    enabled: true
+    max_per_feed: 8
+    max_age_hours: 96
+    feeds:
+      - {name: GitHub Blog, url: "https://github.blog/feed/"}
+      - {name: Simon Willison, url: "https://simonwillison.net/atom/everything/"}
+      - {name: Julia Evans, url: "https://jvns.ca/atom.xml"}
+      - {name: LWN, url: "https://lwn.net/headlines/rss"}
+  github_trending:
+    enabled: true
+    since_days: 7
+    min_stars: 150
+    max_items: 10
+  linkedin: {enabled: false}
+
+llm:
+  model: ollama

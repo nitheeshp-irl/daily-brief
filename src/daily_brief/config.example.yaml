@@ -1,0 +1,76 @@
+# daily-brief configuration. Anything you omit falls back to the built-in default.
+# Relative paths are resolved from the folder containing this file.
+
+profile:                      # used only to personalise the prompt (and hidden by --redact)
+  name: ""
+  role: ""
+  interests: []               # extra free-text interests, e.g. ["platform engineering"]
+
+# Topic groups: the union of all keywords is the allow-list for non-curated sources; each group
+# name becomes a section in the brief, a tag on reading-list items, and a feedback feature.
+# Matching is whole-word and case-insensitive; a trailing * is a prefix wildcard.
+topics:
+  aws: [aws, s3, lambda, eks, bedrock, cdk, cloudformation, "step functions"]
+  devops: [devops, kubernetes, k8s, terraform, gitops, helm, "argo*", "ci/cd", "platform engineer*"]
+  ai: [llm, "ai agent*", rag, "prompt engineer*", mcp, ollama, langchain, "vibe cod*"]
+  opensource: ["open source", "open-source", "release v*"]
+
+filters:
+  block: []                   # terms that always drop a post, e.g. ["crypto", "webinar"]
+  block_regex: []
+  block_presets: [promoted, job_ads]   # also: engagement_bait, ai_hype
+  drop_flagged: false         # true = also drop engagement_bait / generic_ai_hype posts
+  min_chars: 25
+  skip_topic_for: [saved, saved_article, rss]   # curated sources skip the topic allow-list
+
+sources:
+  hackernews: {enabled: true, max_items: 30, min_points: 50}
+  reddit:
+    enabled: true
+    subreddits: [devops, aws, kubernetes, LocalLLaMA]
+    max_per_sub: 10
+  rss:
+    enabled: true
+    max_per_feed: 10
+    max_age_hours: 72
+    feeds:
+      - {name: AWS News Blog, url: "https://aws.amazon.com/blogs/aws/feed/"}
+      - {name: Kubernetes Blog, url: "https://kubernetes.io/feed.xml"}
+      - {name: GitHub Blog, url: "https://github.blog/feed/"}
+  github_trending:            # new repos gaining stars (official search API)
+    enabled: true
+    since_days: 7
+    min_stars: 100
+    max_items: 15
+    topics: []                # e.g. [llm, devops]
+  linkedin:                   # OPT-IN. Read docs/linkedin.md first: automated access may breach
+    enabled: false            # LinkedIn's terms and can get an account restricted.
+    accept_tos: false         # must be true to run
+    mcp_version: "4.29.0"     # pinned on purpose
+    use_feed: true
+    use_search: true
+    use_saved: true
+    search_queries:
+      - "AWS serverless Lambda Step Functions CDK"
+      - "AI agents LLM RAG"
+
+history:
+  dedup_days: 7               # don't re-show items seen on earlier days (saved items exempt)
+
+triage:
+  stale_days: 30              # unread reading-list items older than this are flagged stale
+  show_in_brief: 5
+
+llm:
+  model: ollama               # none | ollama[:m] | claude | claude-sonnet | gpt4o-mini | gemini ...
+  max_input_tokens: 12000
+  max_output_tokens: 6000
+  temperature: 0.2            # low = follows the template more reliably (Ollama)
+  min_chars_for_detail: 300   # items with less text than this get a one-liner, not a detail card
+  redact: false               # pseudonymise authors / hide profile before sending to the LLM
+  fallback_offline: true      # LLM down? still write a no-LLM digest
+  models:                     # shorthand -> model id. Model names change; edit freely.
+    ollama: gemma4:e2b
+    claude: claude-haiku-5-5
+    gpt4o-mini: gpt-4o-mini
+  pricing: {}                 # USD per 1M tokens, e.g.  claude-haiku-5-5: [1.0, 5.0]
